@@ -2,20 +2,20 @@
 hostnamectl set-hostname mycentos
 systemctl stop firewalld.service && systemctl disable firewalld.service
 yum update -y
-yum install -y git
+yum install -y git epel-release libsodium python34-pip
 yum install python-setuptools && easy_install pip
-pip install git+https://github.com/shadowsocks/shadowsocks.git@master
+pip3 install  git+https://github.com/shadowsocks/shadowsocks.git@master
 cat > /etc/shadowsocks.json  << EOF
 {
     "server": "0.0.0.0",
     "port_password": {
-        "8381": "123456",
-        "8382": "123456",
-        "8383": "123456",
-        "8384": "123456"
+        "8728": "123456",
+        "8729": "123456",
+        "8730": "123456",
+        "8731": "123456"
     },
     "timeout": 300,
-    "method": "aes-256-cfb"
+    "method": " xchacha20-ietf-poly1305"
 }
 EOF
-nohup ssserver -c /etc/shadowsocks.json -d start
+ssserver -c /etc/shadowsocks.json -d start
