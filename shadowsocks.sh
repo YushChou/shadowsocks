@@ -15,7 +15,7 @@ cat > /etc/shadowsocks.json  << EOF
         "8731": "123456"
     },
     "timeout": 300,
-    "method": " xchacha20-ietf-poly1305"
+    "method": "xchacha20-ietf-poly1305"
 }
 EOF
 ssserver -c /etc/shadowsocks.json -d start
