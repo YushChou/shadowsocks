@@ -1,4 +1,4 @@
-#！/bin/bash
+#!/bin/bash
 hostnamectl set-hostname mycentos
 systemctl stop firewalld.service && systemctl disable firewalld.service
 yum update -y
