@@ -2,6 +2,7 @@
 hostnamectl set-hostname mycentos
 systemctl stop firewalld.service && systemctl disable firewalld.service
 yum update -y
+yum install -y git vim wget
 yum install python-setuptools && easy_install pip
 pip install git+https://github.com/shadowsocks/shadowsocks.git@master
 cat > /etc/shadowsocks.json  << EOF
@@ -17,4 +18,4 @@ cat > /etc/shadowsocks.json  << EOF
     "method": "aes-256-cfb"
 }
 EOF
-nohub ssserver -c /etc/shadowsocks.json -d start
+nohup ssserver -c /etc/shadowsocks.json -d start
