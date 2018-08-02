@@ -1,3 +1,2 @@
 # shadowsocks
-my shadowsocks
-this is a shadowsocks shell 
+this is a simple shadowsocks shell 
