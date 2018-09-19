@@ -18,7 +18,7 @@ cat > /etc/shadowsocks.json  << EOF
 EOF
 systemctl restart firewalld
 firewall-cmd --zone=public --add-port=8728-8731/tcp --permanent
-firewall-cmd reload
+firewall-cmd --reload
 ssserver -c /etc/shadowsocks.json -d start
 #获取安装信息
 get_ip=$(ip a | grep eth0 | grep inet | awk '{print $2}' |sed 's/\/.*//')
