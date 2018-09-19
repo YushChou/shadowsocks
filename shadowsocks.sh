@@ -1,8 +1,8 @@
 #!/bin/bash
 #this is a shadowsocks shell
 hostnamectl set-hostname mycentos
-yum install -y python-setuptools && easy_install pip
-pip install shadowsocks
+yum install python-setuptools && easy_install pip
+pip install git+https://github.com/shadowsocks/shadowsocks.git@master
 cat > /etc/shadowsocks.json  << EOF
 {
     "server": "0.0.0.0",
@@ -13,9 +13,10 @@ cat > /etc/shadowsocks.json  << EOF
         "8731": "123456"
     },
     "timeout": 300,
-    "method": "aes-256-gcm"
+    "method": "aes-256-ctr"
 }
 EOF
+systemctl restart firewalld
 firewall-cmd --zone=public --add-port=8728-8731/tcp --permanent
 firewall-cmd reload
 ssserver -c /etc/shadowsocks.json -d start
