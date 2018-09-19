@@ -1,7 +1,7 @@
 #!/bin/bash
 #this is a shadowsocks shell
 hostnamectl set-hostname mycentos
-yum install python-setuptools && easy_install pip
+yum install -y epel-release git python-setuptools && easy_install pip
 pip install git+https://github.com/shadowsocks/shadowsocks.git@master
 cat > /etc/shadowsocks.json  << EOF
 {
@@ -38,5 +38,7 @@ echo
 echo -e 'see this info again run the follow command \n# cat serverinfo.txt'
 echo
 echo "##############################################################"
+ssserver -c /etc/shadowsocks.json -d status
+
 
 
